@@ -15,6 +15,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 
 from apread.binaryReader import BinaryReader
+from apread.tools import untilSeconds
 
 
 def read_chunk_from_file(file_path, start, end, typ, buf_loc) -> np.ndarray:
@@ -165,6 +166,15 @@ class Channel:
 
         # flag to indicate that everything is fine
         self.broken = False
+
+    def zero(self, seconds):
+        """Zero the channel data between start and end in seconds.
+
+        Args:
+            seconds (float): Amount of seconds to use for zeroing.            
+        """
+        _, zeroing_data = untilSeconds(self, seconds)
+        self.data = self.data - np.mean(zeroing_data)
 
     def readExtHeader(self, rdr: BinaryReader):
         """
