@@ -171,7 +171,7 @@ class Channel:
         """Zero the channel data between start and end in seconds.
 
         Args:
-            seconds (float): Amount of seconds to use for zeroing.            
+            seconds (float): Amount of seconds to use for zeroing.
         """
         _, zeroing_data = untilSeconds(self, seconds)
         self.data = self.data - np.mean(zeroing_data)
