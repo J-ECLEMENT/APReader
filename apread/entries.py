@@ -74,6 +74,9 @@ class Channel:
     # The parallel pool which holds parallel processes.
     parallelPool: mpPool
 
+    @property
+    def sampling_frequency(self):
+        return int(round(1/(self.Time.data[1] - self.Time.data[0]),0))
 
     @property
     def Time(self):

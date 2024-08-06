@@ -354,4 +354,4 @@ class APReader:
             print('---------')
             print(group.Name)
             for channel in group.ChannelsY:
-                print(f'\t{channel.Name} ({len(channel.data)})')
+                print(f'\t{channel.Name} ({len(channel.data)}) at {channel.sampling_frequency} Hz')
